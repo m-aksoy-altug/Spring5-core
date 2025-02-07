@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.spring.core.service.AppConsumer;
 import com.spring.core.service.AppService;
 
 public class SpringApp {
@@ -19,13 +20,16 @@ public class SpringApp {
         AppService appService = (AppService) context.getBean("appService");
         appService.test();
         appService.generatorTest();
+        
+        AppConsumer appConsumer = (AppConsumer) context.getBean(AppConsumer.class);
+        appConsumer.test();
         ((ClassPathXmlApplicationContext) context).close();
         
 
         ApplicationContext contextD = new AnnotationConfigApplicationContext();
         String[] beanNames = contextD.getBeanDefinitionNames();
         List<String> coreBeans = Arrays.stream(beanNames).collect(Collectors.toList());
-        System.out.println("Spring Core Beans Registered by Default:");
+        System.out.println("\n\n\nSpring Core Beans Registered by Default:");
         coreBeans.forEach(System.out::println);
         ((AnnotationConfigApplicationContext) contextD).close();
   }

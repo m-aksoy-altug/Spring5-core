@@ -11,11 +11,11 @@ public class AppService {
 	}
 
 	public void test() {
-		System.out.println("test: " + message);
+		System.out.println("AppService test: " + message);
 	}
 	
 	public void generatorTest() {
-		generatorImp.testGenerator(message);
+		generatorImp.testGenerator("AppService test: " + message);
 	}
 
 }

@@ -9,4 +9,8 @@
     </bean>
     <bean id="Xgenerator" class="com.spring.core.service.XGenerator"></bean>
     <bean id="Ygenerator" class="com.spring.core.service.YGenerator"></bean>
+    
+    <bean id="appConsumer" class="com.spring.core.service.AppConsumer">
+    	<property name="message" value="Message from Setting injection"></property>
+    </bean>
 </beans>
