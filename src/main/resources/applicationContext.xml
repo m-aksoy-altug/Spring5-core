@@ -6,4 +6,7 @@
     <bean id="appService" class="com.spring.core.service.AppService">
         <property name="message" value="Spring XML Configuration" />
     </bean>
+    <bean id="appServiceDup" class="com.spring.core.service.AppService">
+        <property name="message" value="Duplicate bean with same POJO" />
+    </bean>
 </beans>
