@@ -18,11 +18,7 @@ public class SpringApp {
         		new ClassPathXmlApplicationContext("applicationContext.xml");
         AppService appService = (AppService) context.getBean("appService");
         appService.test();
-        AppService appServiceDup = (AppService) context.getBean("appServiceDup");
-        appServiceDup.test();
-        AppService appServiceDupAnother = (AppService) context.getBean("appServiceDup",AppService.class);
-        appServiceDupAnother.test();
-        
+        appService.generatorTest();
         ((ClassPathXmlApplicationContext) context).close();
         
 

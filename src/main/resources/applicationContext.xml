@@ -4,9 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="appService" class="com.spring.core.service.AppService">
-        <property name="message" value="Spring XML Configuration" />
+        <constructor-arg name="generatorInput" ref="generator"/>  
+        <constructor-arg name="message" value= "Setting a value from constructor"/>  
     </bean>
-    <bean id="appServiceDup" class="com.spring.core.service.AppService">
-        <property name="message" value="Duplicate bean with same POJO" />
+    <bean id="generator" class="com.spring.core.service.Generator">
     </bean>
 </beans>
