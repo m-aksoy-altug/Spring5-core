@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.spring.core.service.AppConsumer;
 import com.spring.core.service.AppService;
+import com.spring.core.service.TestAutowire;
 
 public class SpringApp {
 	
@@ -23,6 +24,10 @@ public class SpringApp {
         
         AppConsumer appConsumer = (AppConsumer) context.getBean(AppConsumer.class);
         appConsumer.test();
+        
+        TestAutowire testAutowire = (TestAutowire) context.getBean(TestAutowire.class);
+        testAutowire.test();
+        
         ((ClassPathXmlApplicationContext) context).close();
         
 

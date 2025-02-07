@@ -14,4 +14,9 @@
     <bean id="appConsumer" class="com.spring.core.service.AppConsumer">
     	<property name="message" value="Message from Setting injection"></property>
     </bean>
+    	<!--Autowiring byName based on property, uses setter injection, remain unwired-->
+    <bean id="testAutowire" class="com.spring.core.service.TestAutowire" autowire="byName">
+    	<property name="message" value="Message from autowire byName, using setter injection"></property>
+    </bean>
+    
 </beans>
