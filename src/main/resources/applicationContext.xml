@@ -4,9 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="appService" class="com.spring.core.service.AppService">
-        <constructor-arg name="generatorInput" ref="generator"/>  
+        <constructor-arg name="generatorInput" ref="Xgenerator"/>  
         <constructor-arg name="message" value= "Setting a value from constructor"/>  
     </bean>
-    <bean id="generator" class="com.spring.core.service.Generator">
-    </bean>
+    <bean id="Xgenerator" class="com.spring.core.service.XGenerator"></bean>
+    <bean id="Ygenerator" class="com.spring.core.service.YGenerator"></bean>
 </beans>

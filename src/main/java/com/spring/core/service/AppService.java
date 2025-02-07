@@ -3,11 +3,11 @@ package com.spring.core.service;
 public class AppService {
 	
 	private String message;
-	private Generator generator;
+	private GeneratorImp generatorImp;
 	
-	public AppService(Generator generatorInput,String message) {
+	public AppService(GeneratorImp generatorInput,String message) {
 		this.message=message;
-		this.generator= generatorInput;
+		this.generatorImp= generatorInput;
 	}
 
 	public void test() {
@@ -15,7 +15,7 @@ public class AppService {
 	}
 	
 	public void generatorTest() {
-		generator.testGenerator(message);
+		generatorImp.testGenerator(message);
 	}
 
 }
