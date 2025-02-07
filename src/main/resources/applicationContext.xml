@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="appService" class="com.spring.core.service.AppService">
-        <property name="message" value="Spring XML-based REST API!!!" />
+        <property name="message" value="Spring XML Configuration" />
     </bean>
 </beans>
