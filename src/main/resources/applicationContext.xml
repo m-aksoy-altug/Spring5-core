@@ -3,13 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--Constructor injection: Mandatory dependencies,immutable dependencies,passing multiple parameters once-->
     <bean id="appService" class="com.spring.core.service.AppService">
         <constructor-arg name="generatorInput" ref="Xgenerator"/>  
         <constructor-arg name="message" value= "Setting a value from constructor"/>  
     </bean>
     <bean id="Xgenerator" class="com.spring.core.service.XGenerator"></bean>
     <bean id="Ygenerator" class="com.spring.core.service.YGenerator"></bean>
-    
+  	 <!--Setter injection: Changeable dependencies, circular dependencies-->
     <bean id="appConsumer" class="com.spring.core.service.AppConsumer">
     	<property name="message" value="Message from Setting injection"></property>
     </bean>
