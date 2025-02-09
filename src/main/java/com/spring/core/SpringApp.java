@@ -25,8 +25,28 @@ public class SpringApp {
         AppConsumer appConsumer = (AppConsumer) context.getBean(AppConsumer.class);
         appConsumer.test();
         
-        TestAutowire testAutowire = (TestAutowire) context.getBean(TestAutowire.class);
-        testAutowire.test();
+        TestAutowire testAutowirebyName = (TestAutowire) context.getBean("testAutowirebyName",TestAutowire.class);
+        testAutowirebyName.test();
+        
+        TestAutowire testAutowireByType = (TestAutowire) context.getBean("testAutowireByType",TestAutowire.class);
+        testAutowireByType.test();
+        
+        TestAutowire testAutowireConstructor = (TestAutowire) context.getBean("testAutowireConstructor",TestAutowire.class);
+        testAutowireConstructor.test();
+        
+        AppService appServiceNoAutowire = (AppService) context.getBean("appServiceNoAutowire");
+        appServiceNoAutowire.test();
+       
+        TestAutowire testBeanScopeSingleton1 = (TestAutowire) context.getBean("testAutowireScopeSingleton",TestAutowire.class);
+        TestAutowire testBeanScopeSingleton2 = (TestAutowire) context.getBean("testAutowireScopeSingleton",TestAutowire.class);
+        System.out.println("HashCode of testBeanScopeSingleton1:"+testBeanScopeSingleton1.hashCode());
+        System.out.println("HashCode of testBeanScopeSingleton2:"+testBeanScopeSingleton2.hashCode());
+        
+        TestAutowire testAutowireScopePrototype1 = (TestAutowire) context.getBean("testAutowireScopePrototype");
+        TestAutowire testAutowireScopePrototype2 = (TestAutowire) context.getBean("testAutowireScopePrototype");
+        System.out.println("HashCode of testAutowireScopePrototype1:"+testAutowireScopePrototype1.hashCode());
+        System.out.println("HashCode of testAutowireScopePrototype2:"+testAutowireScopePrototype2.hashCode());
+        
         
         ((ClassPathXmlApplicationContext) context).close();
         

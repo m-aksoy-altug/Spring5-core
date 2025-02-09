@@ -14,9 +14,33 @@
     <bean id="appConsumer" class="com.spring.core.service.AppConsumer">
     	<property name="message" value="Message from Setting injection"></property>
     </bean>
-    	<!--Autowiring byName based on property, uses setter injection, remain unwired-->
-    <bean id="testAutowire" class="com.spring.core.service.TestAutowire" autowire="byName">
+    	<!--Autowiring byName based on property, uses setter injection. if error, remain unwired-->
+    <bean id="testAutowirebyName" class="com.spring.core.service.TestAutowire" autowire="byName">
     	<property name="message" value="Message from autowire byName, using setter injection"></property>
     </bean>
+    	<!--Autowiring byName based on property (any bean id), uses setter injection. if error, throws Runtime exception-->
+    <bean id="testAutowireByType" class="com.spring.core.service.TestAutowire" autowire="byType">
+    	<property name="message" value="Message from autowire byType, using setter injection"></property>
+    </bean>
+  	  	<!--Autowiring by Parameterised constructor based on property (any bean id), uses constructor injection. if error, throws Runtime exception-->
+    <bean id="testAutowireConstructor" class="com.spring.core.service.TestAutowire" autowire="constructor">
+    	<constructor-arg name="message" value="Message from autowire constructor, using constructor injection"/>
+    </bean>
+    <!--No autowiring, default, AppService dependent on generatorImp bean, if error, throws Runtime exception-->
+    <bean id="appServiceNoAutowire" class="com.spring.core.service.AppService" autowire="no">
+        <constructor-arg name="generatorInput" ref="dependentgenerator"/>  
+        <constructor-arg name="message" value= "Setting a value from constructor, injecting required dependency explicity"/>  
+    </bean>
+    <bean id="dependentgenerator" class="com.spring.core.service.YGenerator"></bean>
     
+    	<!--Scope:Singleton: Stateless -->
+    	<!--Scope:Singleton, default, the same bean is given for very request from the application-->
+    <bean id="testAutowireScopeSingleton" class="com.spring.core.service.TestAutowire"  scope="singleton">
+    	<property name="message" value="Message: default scope singleton, same bean assigned for every request"></property>
+    </bean>
+    	<!--Scope:Prototype: Stateful-->
+		<!--Scope:Prototype, new bean is created for very request from the application-->
+    <bean id="testAutowireScopePrototype" class="com.spring.core.service.TestAutowire"  scope="prototype">
+    	<property name="message" value="Message: a new bean assigned for every request"></property>
+    </bean>
 </beans>
