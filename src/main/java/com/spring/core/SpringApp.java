@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.spring.core.service.AppConsumer;
 import com.spring.core.service.AppService;
+import com.spring.core.service.DummyService;
 import com.spring.core.service.TestAutowire;
 import com.spring.core.service.TestAutowireAnnotation;
 
@@ -57,6 +58,13 @@ public class SpringApp {
         System.out.println("HashCode of testAutowireAnnotation:"+testAutowireAnnotation.hashCode());
         testAutowireAnnotation.test();
 		
+       try { 
+        DummyService dummyService = (DummyService) context.getBean("dummyService");
+        System.out.println(dummyService.findById(2).getName());
+       }catch(Exception e) {
+    	   System.out.println(e.getMessage());
+       }
+       
         ((ClassPathXmlApplicationContext) context).close();
  
        

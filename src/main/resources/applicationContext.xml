@@ -51,4 +51,7 @@
     <bean id="testAutowireScopePrototype" class="com.spring.core.service.TestAutowire"  scope="prototype">
     	<property name="message" value="Message: a new bean assigned for every request"></property>
     </bean>
+    
+     <bean id="dummyService" class="com.spring.core.service.DummyService"></bean>
+   	 <bean id="dummyRepositoryImpl" class="com.spring.core.repo.DummyRepositoryImpl"></bean>
 </beans>
