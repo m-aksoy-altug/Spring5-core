@@ -14,7 +14,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
     http://www.springframework.org/schema/beans classpath:spring-schema/spring-beans.xsd
-    http://www.springframework.org/schema/context classpath:spring-schema/spring-context.xsd">
+    http://www.springframework.org/schema/context classpath:spring-schema/spring-context.xsd
+    http://www.springframework.org/schema/aop classpath:spring-schema/spring-aop.xsd ">
  -->   
  <!--Enabling AOP with aspect3 annottion-->
  <!--<aop:aspectj-autoproxy/>-->
