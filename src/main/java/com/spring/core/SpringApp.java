@@ -9,16 +9,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.spring.core.config.AppConfig;
+import com.spring.core.config.SpringConfig;
 import com.spring.core.service.AppConsumer;
 import com.spring.core.service.AppService;
 import com.spring.core.service.DummyService;
 import com.spring.core.service.TestAutowire;
 import com.spring.core.service.TestAutowireAnnotation;
+import com.spring.core.servicejava.ServiceJava;
 
 public class SpringApp {
-	
-	@Autowired
-    public TestAutowireAnnotation testAutowirebyUsingAutowiredAnnotation;
 	
 	
 	public static void main(String[] args) {
@@ -64,10 +64,22 @@ public class SpringApp {
        }catch(Exception e) {
     	   System.out.println(e.getMessage());
        }
-       
         ((ClassPathXmlApplicationContext) context).close();
- 
-       
+        
+        ApplicationContext contextByConfigClass =  new AnnotationConfigApplicationContext(AppConfig.class);
+        TestAutowire testAutowire= (TestAutowire) contextByConfigClass.getBean("modifiedBeanNameTestAutowire");
+        AppService xAppService= (AppService) contextByConfigClass.getBean("xAppService");
+        AppService yAppService= (AppService) contextByConfigClass.getBean("yAppService");
+        ((AnnotationConfigApplicationContext) contextByConfigClass).close();
+        
+        ApplicationContext contextBySpringConfigClass =  new AnnotationConfigApplicationContext(SpringConfig.class);
+        ServiceJava serviceJava = (ServiceJava) contextBySpringConfigClass.getBean("serviceJava");
+        System.out.println("\nServiceJava by using SpringConfig.class and autoscanning....");
+        System.out.println(serviceJava.findById(2).getName());
+        SpringConfig config = contextBySpringConfigClass.getBean(SpringConfig.class);
+        System.out.println("App Name : " + config.getAppName());
+        ((AnnotationConfigApplicationContext) contextBySpringConfigClass).close();
+        
         ApplicationContext contextD = new AnnotationConfigApplicationContext();
         String[] beanNames = contextD.getBeanDefinitionNames();
         List<String> coreBeans = Arrays.stream(beanNames).collect(Collectors.toList());

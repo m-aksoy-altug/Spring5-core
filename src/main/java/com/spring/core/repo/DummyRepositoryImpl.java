@@ -3,8 +3,11 @@ package com.spring.core.repo;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.spring.domain.DummyDomain;
 
+@Repository
 public class DummyRepositoryImpl implements DummyRepository {
 	private static final Map<Integer,DummyDomain> DUMMYDOMAINS= new HashMap<Integer,DummyDomain>();
 	static{

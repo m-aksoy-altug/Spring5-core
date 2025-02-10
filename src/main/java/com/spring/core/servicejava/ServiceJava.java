@@ -1,15 +1,14 @@
-package com.spring.core.service;
+package com.spring.core.servicejava;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.spring.core.repo.DummyRepository;
 import com.spring.domain.DummyDomain;
 
-@Service // removing bean definition from xml file
-public class DummyService {
+@Service 
+public class ServiceJava {
 	
 	@Autowired(required = false) // Avoiding run time exceptions, including unSatisfiedDependencyException
 	@Qualifier("dummyRepositoryImpl")
@@ -18,5 +17,4 @@ public class DummyService {
 	public DummyDomain findById(int id) {
 		return dummyRepository.getDummyById(id);
 	}
-
 }

@@ -14,11 +14,11 @@ public class TestAutowireAnnotation {
 	
 	// GeneratorImp contains more than one bean, picking correct bean by @Qualifier
 	@Autowired
-	@Qualifier("Xgenerator")
+	@Qualifier("XGenerator")
 	private GeneratorImp xgeneratorImp;
 	
 	@Autowired
-	@Qualifier("Ygenerator")
+	@Qualifier("YGenerator")
 	private GeneratorImp ygeneratorImp;
 	
 	public void test() {
