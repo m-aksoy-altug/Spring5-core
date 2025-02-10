@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,8 +12,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.spring.core.service.AppConsumer;
 import com.spring.core.service.AppService;
 import com.spring.core.service.TestAutowire;
+import com.spring.core.service.TestAutowireAnnotation;
 
 public class SpringApp {
+	
+	@Autowired
+    public TestAutowireAnnotation testAutowirebyUsingAutowiredAnnotation;
+	
 	
 	public static void main(String[] args) {
 				
@@ -46,11 +52,14 @@ public class SpringApp {
         TestAutowire testAutowireScopePrototype2 = (TestAutowire) context.getBean("testAutowireScopePrototype");
         System.out.println("HashCode of testAutowireScopePrototype1:"+testAutowireScopePrototype1.hashCode());
         System.out.println("HashCode of testAutowireScopePrototype2:"+testAutowireScopePrototype2.hashCode());
-        
-        
+          
+        TestAutowireAnnotation testAutowireAnnotation = (TestAutowireAnnotation) context.getBean(TestAutowireAnnotation.class);
+        System.out.println("HashCode of testAutowireAnnotation:"+testAutowireAnnotation.hashCode());
+        testAutowireAnnotation.test();
+		
         ((ClassPathXmlApplicationContext) context).close();
-        
-
+ 
+       
         ApplicationContext contextD = new AnnotationConfigApplicationContext();
         String[] beanNames = contextD.getBeanDefinitionNames();
         List<String> coreBeans = Arrays.stream(beanNames).collect(Collectors.toList());
@@ -58,5 +67,6 @@ public class SpringApp {
         coreBeans.forEach(System.out::println);
         ((AnnotationConfigApplicationContext) contextD).close();
   }
+	
 		
 }

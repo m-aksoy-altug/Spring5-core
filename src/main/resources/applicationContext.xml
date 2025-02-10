@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- Autowired Annotation,
+		Spring context namespace has annotation-config tag and hence context namespace has to be included in the decleration-->
+    <context:annotation-config/>
+    <!-- Component scanning -->
+    <context:component-scan base-package="com.spring.core"/>
     <!--Constructor injection: Mandatory dependencies,immutable dependencies,passing multiple parameters once-->
     <bean id="appService" class="com.spring.core.service.AppService">
         <constructor-arg name="generatorInput" ref="Xgenerator"/>  
