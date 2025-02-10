@@ -23,7 +23,11 @@ public class DummyRepositoryImpl implements DummyRepository {
 	
 	@Override
 	public DummyDomain getDummyById(int id) {
-		return DUMMYDOMAINS.get(id);
+		DummyDomain result = DUMMYDOMAINS.get(id);
+		if(result==null) {
+			throw new RuntimeException("Dummy Domain is null...");
+		}
+		return result;
 	}
 
 }

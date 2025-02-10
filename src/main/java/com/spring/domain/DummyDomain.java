@@ -17,5 +17,10 @@ public class DummyDomain {
 		this.name = name;
 	}
 	
+	@Override
+	public String toString() {
+		return "DummyDomain [id=" + id + ", name=" + name + "]";
+	}
+	
 	
 }
