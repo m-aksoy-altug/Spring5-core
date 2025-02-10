@@ -2,17 +2,28 @@ package com.spring.core.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component // no bean initialization in xml, component scane will pick it as Bean
 public class TestAutowireAnnotation {
 	
 //	// bean initialization in xml, same as byType // Autowiring on property
+//	@Autowired
+//	private XGenerator xGenerator;
+	
+	// GeneratorImp contains more than one bean, picking correct bean by @Qualifier
 	@Autowired
-	private XGenerator xGenerator;
+	@Qualifier("Xgenerator")
+	private GeneratorImp xgeneratorImp;
+	
+	@Autowired
+	@Qualifier("Ygenerator")
+	private GeneratorImp ygeneratorImp;
 	
 	public void test() {
-		xGenerator.testGenerator("@Autowired XGenerator inside the TestAutowired...");
+		xgeneratorImp.testGenerator("@Autowired XGenerator inside the TestAutowired...");
+		ygeneratorImp.testGenerator("@Autowired Ygenerator inside the TestAutowired...");
 	}
 	
 //	public TestAutowireAnnotation() {}
