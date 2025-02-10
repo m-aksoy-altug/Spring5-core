@@ -75,7 +75,7 @@ public class SpringApp {
         ApplicationContext contextBySpringConfigClass =  new AnnotationConfigApplicationContext(SpringConfig.class);
         ServiceJava serviceJava = (ServiceJava) contextBySpringConfigClass.getBean("serviceJava");
         System.out.println("\nServiceJava by using SpringConfig.class and autoscanning....");
-        System.out.println(serviceJava.findById(2).getName());
+        System.out.println("ServiceJava getName: "+serviceJava.findById(2).getName());
         SpringConfig config = contextBySpringConfigClass.getBean(SpringConfig.class);
         System.out.println("App Name : " + config.getAppName());
         ((AnnotationConfigApplicationContext) contextBySpringConfigClass).close();
